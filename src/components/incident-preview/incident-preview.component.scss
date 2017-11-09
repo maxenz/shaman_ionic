@@ -39,6 +39,10 @@ incident-preview {
     }
   }
 
+  .time-column, .incident-number-column {
+    text-align:right;
+  }
+
   ion-col {
     div.incident-right-data {
       & > i, span {
