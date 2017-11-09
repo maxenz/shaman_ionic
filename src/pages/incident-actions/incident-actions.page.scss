@@ -1,4 +1,9 @@
 page-incident-actions {
+  ion-content.content-ios {
+    div.scroll-content {
+      margin-top:43px !important;
+    }
+  }
   ion-item.no-border-bottom {
     div.item-inner {
       border-bottom: none !important;
