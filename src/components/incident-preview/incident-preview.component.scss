@@ -45,7 +45,7 @@ incident-preview {
 
   ion-col {
     div.incident-right-data {
-      & > i, span {
+      & > ion-icon, span {
         vertical-align:middle;
       }
     }
