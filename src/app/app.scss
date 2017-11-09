@@ -14,3 +14,28 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.content-md, .content-ios {
+  background-color:  color($colors, light, base);
+}
+
+.icon-circle{
+  position: relative;
+  display: inline-block;
+  margin: -1px;
+  width: 35px; /* 60*/
+  height: 35px;
+  font-size:27px;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  border-radius: 50%;
+  border: 1px solid #ebebeb;
+  color: #fff;
+  text-align:center;
+  & ion-icon {
+    font-size:23px;
+  }
+  &.icon-circle-red {
+    background: color($colors, danger, base);
+  }
+}

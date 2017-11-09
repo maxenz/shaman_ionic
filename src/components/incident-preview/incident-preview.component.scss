@@ -1,0 +1,48 @@
+incident-preview {
+
+  & > div {
+    background-color: color($colors, white, base);
+    padding:7px;
+    width:100%;
+    height:82px;
+  }
+  ion-row {
+    & > ion-col.incident-center-column {
+      margin-left:-4%;
+    }
+
+    & p.address {
+      margin:0;
+      font-weight:bold;
+      font-size:14px;
+    }
+
+    & p.illness {
+      margin:0;
+      font-size:12px;
+    }
+
+    & ion-badge {
+      font-size:10px;
+    }
+
+    & span.incident-time {
+      font-size:12px;
+    }
+  }
+
+  ion-col.distance-column {
+    margin-left:12%;
+    & > p {
+      margin:0;
+      font-size:12px;
+    }
+  }
+
+  hr {
+    margin-left:13%;
+    margin-top:0;
+    margin-bottom:0;
+  }
+
+}
