@@ -10,8 +10,10 @@
   </ion-navbar>
 
 </ion-header>
+<ion-content>
+  <ion-tabs tabsPlacement="top" id="tabIncidentHome" color="white" tabsLayout="icon-hide">
+    <ion-tab tabTitle="Detalles" [root]="incidentDetailsTab"></ion-tab>
+    <ion-tab tabTitle="Acciones" [root]="incidentActionsTab"></ion-tab>
+  </ion-tabs>
+</ion-content>
 
-<ion-tabs tabsPlacement="top" id="tabIncidentHome" color="white" tabsLayout="icon-hide">
-  <ion-tab tabTitle="Detalles" [root]="incidentDetailsTab"></ion-tab>
-  <ion-tab tabTitle="Acciones" [root]="incidentActionsTab"></ion-tab>
-</ion-tabs>
