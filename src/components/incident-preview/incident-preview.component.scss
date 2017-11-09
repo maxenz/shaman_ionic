@@ -32,7 +32,7 @@ incident-preview {
   }
 
   ion-col.distance-column {
-    margin-left:12.5%;
+    margin-left:-4%;
     & > p {
       margin:0;
       font-size:12px;
@@ -41,7 +41,9 @@ incident-preview {
 
   ion-col {
     div.incident-right-data {
-      text-align:right;
+      & > i, span {
+        vertical-align:middle;
+      }
     }
   }
 
