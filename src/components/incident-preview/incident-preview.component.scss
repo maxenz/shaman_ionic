@@ -32,15 +32,21 @@ incident-preview {
   }
 
   ion-col.distance-column {
-    margin-left:12%;
+    margin-left:12.5%;
     & > p {
       margin:0;
       font-size:12px;
     }
   }
 
+  ion-col {
+    div.incident-right-data {
+      text-align:right;
+    }
+  }
+
   hr {
-    margin-left:13%;
+    margin-left:14%;
     margin-top:0;
     margin-bottom:0;
   }
