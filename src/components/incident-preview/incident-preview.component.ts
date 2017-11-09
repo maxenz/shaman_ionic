@@ -2,17 +2,16 @@ import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'incident-preview',
-  templateUrl: './incident-preview.template.html'
+  templateUrl: './incident-preview.component.html'
 })
 export class IncidentPreviewComponent {
   @Input() incident;
-  myIncident: any;
   constructor() {
 
   }
 
-  ngAfterViewInit()
-  {
-    this.incident.number = 14;
-  }
+  // ngViewAfterInit() {
+  //   console.log(this.incident);
+  // }
+
 }

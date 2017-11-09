@@ -38,4 +38,22 @@
   &.icon-circle-red {
     background: color($colors, danger, base);
   }
+  &.icon-circle-green {
+    background: color($colors, primary, base);
+  }
+  &.icon-circle-yellow {
+    background: color($colors, yellow, base);
+  }
+}
+
+ion-badge.red {
+  background: color($colors, danger, base);
+}
+
+ion-badge.green {
+  background: color($colors, primary, base);
+}
+
+ion-badge.yellow {
+  background: color($colors, yellow, base);
 }

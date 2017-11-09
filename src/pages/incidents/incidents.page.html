@@ -1,3 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Buscar incidente"
+                   [(ngModel)]="queryText" (ionInput)="searchIncidents()">
+
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <incident-preview [incident]="incident"></incident-preview>
+
+  <div *ngFor="let incident of incidents">
+    <incident-preview [incident]="incident" (click)="goToIncidentDetails($event,incident)"></incident-preview>
+  </div>
+
 </ion-content>

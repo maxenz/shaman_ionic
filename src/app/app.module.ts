@@ -2,7 +2,15 @@ import {NgModule, ErrorHandler} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
-import {IncidentsPage, ProfilePage, TabsPage, SettingsPage} from '../pages/pages';
+import {
+  IncidentsPage,
+  ProfilePage,
+  TabsPage,
+  SettingsPage,
+  IncidentDetailsPage,
+  IncidentHomePage,
+  IncidentActionsPage
+} from '../pages/pages';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {IncidentPreviewComponent} from '../components/incident-preview/incident-preview.component';
@@ -14,6 +22,9 @@ import {IncidentPreviewComponent} from '../components/incident-preview/incident-
     IncidentsPage,
     ProfilePage,
     SettingsPage,
+    IncidentDetailsPage,
+    IncidentHomePage,
+    IncidentActionsPage,
     IncidentPreviewComponent
   ],
   imports: [
@@ -27,6 +38,9 @@ import {IncidentPreviewComponent} from '../components/incident-preview/incident-
     IncidentsPage,
     ProfilePage,
     SettingsPage,
+    IncidentDetailsPage,
+    IncidentHomePage,
+    IncidentActionsPage,
     IncidentPreviewComponent
   ],
   providers: [
