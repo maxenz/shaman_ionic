@@ -1,3 +1,34 @@
-<ion-content padding>
-holu
+<ion-content>
+
+  <div class="incident-preview-container">
+    <incident-preview [incident]="incident"></incident-preview>
+  </div>
+
+  <ion-list class="accordion-list">
+    <ion-list-header *ngFor="let item of detailSections, let i = index" no-lines no-padding>
+      <button ion-item (click)="toggleSection(i)" detail-none
+              [ngClass]="{'section-active': item.open, 'section': !item.open}">
+        <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>
+        <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>
+        {{ item.name }}
+      </button>
+      <ion-list *ngIf="item.children && item.open" no-lines>
+        <!-- Second Level -->
+        <ion-list-header *ngFor="let child of item.children; let j = index" no-padding>
+
+          <!-- Direct Add Button as Fallback -->
+          <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
+            <h2>{{ child.name }}</h2>
+            <p text-lowercase>{{ child.information }}</p>
+            <button ion-button outline item-end>{{ child.price }}</button>
+          </ion-item>
+
+
+
+        </ion-list-header>
+      </ion-list>
+
+    </ion-list-header>
+  </ion-list>
+
 </ion-content>

@@ -13,7 +13,7 @@ import {
 } from '../pages/pages';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {IncidentPreviewComponent} from '../components/incident-preview/incident-preview.component';
+import {IncidentPreviewComponent, IncidentActionRowComponent} from '../components/components';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import {IncidentPreviewComponent} from '../components/incident-preview/incident-
     IncidentDetailsPage,
     IncidentHomePage,
     IncidentActionsPage,
-    IncidentPreviewComponent
+    IncidentPreviewComponent,
+    IncidentActionRowComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,8 @@ import {IncidentPreviewComponent} from '../components/incident-preview/incident-
     IncidentDetailsPage,
     IncidentHomePage,
     IncidentActionsPage,
-    IncidentPreviewComponent
+    IncidentPreviewComponent,
+    IncidentActionRowComponent
   ],
   providers: [
     StatusBar,

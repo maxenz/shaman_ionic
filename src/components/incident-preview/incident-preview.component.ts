@@ -10,8 +10,4 @@ export class IncidentPreviewComponent {
 
   }
 
-  // ngViewAfterInit() {
-  //   console.log(this.incident);
-  // }
-
 }

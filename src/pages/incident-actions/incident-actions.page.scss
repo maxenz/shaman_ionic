@@ -1,8 +1,9 @@
 page-incident-actions {
-  ion-item.no-border-bottom {
-    div.item-inner {
-      border-bottom: none !important;
+  incident-action-row.no-border-bottom {
+     ion-item {
+      div.item-inner {
+        border-bottom: none !important;
+      }
     }
   }
-
 }
