@@ -9,9 +9,4 @@ export class IncidentActionsPage {
 
   constructor(private navCtrl: NavController, private navParams: NavParams) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IncidentActionsPage');
-  }
-
 }

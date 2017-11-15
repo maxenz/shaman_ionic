@@ -57,3 +57,7 @@ ion-badge.green {
 ion-badge.yellow {
   background: color($colors, yellow, base);
 }
+
+.no-border-bottom {
+  border-bottom: none !important;
+}

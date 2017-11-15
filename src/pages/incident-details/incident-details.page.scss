@@ -15,7 +15,6 @@ page-incident-details {
   .child {
     background: #e8e7e6;
     color: #000;
-    margin-bottom: 4px;
   }
   .child-item {
     background: #f3f2f1;
@@ -29,6 +28,17 @@ page-incident-details {
   }
 
   div.incident-preview-container {
-    margin-top:10px;
+    margin-top: 10px;
   }
+
+  .list-header {
+    margin-bottom: 2px;
+  }
+
+  #internalDetailList {
+    ion-item {
+      border-bottom: 1px solid color($colors, line-divider, base);
+    }
+  }
+
 }

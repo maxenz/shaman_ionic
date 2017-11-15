@@ -13,6 +13,7 @@ import {
 } from '../pages/pages';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
+import {AppVersion} from '@ionic-native/app-version';
 import {IncidentPreviewComponent, IncidentActionRowComponent} from '../components/components';
 
 @NgModule({
@@ -30,7 +31,9 @@ import {IncidentPreviewComponent, IncidentActionRowComponent} from '../component
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      backButtonText: ''
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,6 +51,7 @@ import {IncidentPreviewComponent, IncidentActionRowComponent} from '../component
   providers: [
     StatusBar,
     SplashScreen,
+    AppVersion,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

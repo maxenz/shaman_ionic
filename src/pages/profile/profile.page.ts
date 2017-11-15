@@ -10,9 +10,4 @@ export class ProfilePage {
   constructor(private nav: NavController,
               private loadingController: LoadingController) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
-  }
-
 }

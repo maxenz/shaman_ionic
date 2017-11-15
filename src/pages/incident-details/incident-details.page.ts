@@ -77,10 +77,6 @@ export class IncidentDetailsPage {
     ];
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IncidentDetailsPage');
-  }
-
   toggleSection(i) {
     this.detailSections[i].open = !this.detailSections[i].open;
   }

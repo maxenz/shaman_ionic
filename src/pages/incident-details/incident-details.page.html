@@ -12,20 +12,13 @@
         <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>
         {{ item.name }}
       </button>
-      <ion-list *ngIf="item.children && item.open" no-lines>
-        <!-- Second Level -->
-        <ion-list-header *ngFor="let child of item.children; let j = index" no-padding>
+      <ion-list *ngIf="item.children && item.open" id="internalDetailList">
+        <ion-item *ngFor="let child of item.children, let j = index"
+                  [ngClass]="{'no-border-bottom' : j === item.children.length - 1}">
+          <p item-left>{{child.name}}</p>
+          <p item-right>{{child.price}}</p>
+        </ion-item>
 
-          <!-- Direct Add Button as Fallback -->
-          <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
-            <h2>{{ child.name }}</h2>
-            <p text-lowercase>{{ child.information }}</p>
-            <button ion-button outline item-end>{{ child.price }}</button>
-          </ion-item>
-
-
-
-        </ion-list-header>
       </ion-list>
 
     </ion-list-header>

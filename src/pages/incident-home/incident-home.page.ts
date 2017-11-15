@@ -14,13 +14,4 @@ export class IncidentHomePage {
   constructor(private nav: NavController, private navParams: NavParams) {
     this.incident = navParams.data;
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IncidentHomePage');
-  }
-
-  goHome() {
-    this.nav.popToRoot();
-  }
-
 }
