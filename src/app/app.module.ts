@@ -2,6 +2,7 @@ import {NgModule, ErrorHandler} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
+import {HttpModule} from '@angular/http';
 import {
   IncidentsPage,
   ProfilePage,
@@ -15,6 +16,8 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AppVersion} from '@ionic-native/app-version';
 import {IncidentPreviewComponent, IncidentActionRowComponent} from '../components/components';
+import {IncidentsApi} from '../shared/shared';
+import {TruncatePipe} from "../utils/utils";
 
 @NgModule({
   declarations: [
@@ -27,13 +30,15 @@ import {IncidentPreviewComponent, IncidentActionRowComponent} from '../component
     IncidentHomePage,
     IncidentActionsPage,
     IncidentPreviewComponent,
-    IncidentActionRowComponent
+    IncidentActionRowComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: ''
-    })
+    }),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +57,8 @@ import {IncidentPreviewComponent, IncidentActionRowComponent} from '../component
     StatusBar,
     SplashScreen,
     AppVersion,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    IncidentsApi
   ]
 })
 export class AppModule {

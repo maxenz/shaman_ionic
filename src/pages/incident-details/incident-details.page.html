@@ -16,7 +16,7 @@
         <ion-item *ngFor="let child of item.children, let j = index"
                   [ngClass]="{'no-border-bottom' : j === item.children.length - 1}">
           <p item-left>{{child.name}}</p>
-          <p item-right>{{child.price}}</p>
+          <p item-right>{{child.value}}</p>
         </ion-item>
 
       </ion-list>

@@ -1,40 +1,31 @@
 import {Component} from '@angular/core';
 import {NavController, LoadingController} from 'ionic-angular';
 import {IncidentHomePage} from "../pages";
-
-// import { EliteApi, UserSettings} from '../../shared/shared';
+import {IncidentsApi} from '../../shared/shared';
+import {IncidentModel} from '../../models/models';
 
 @Component({
   selector: 'page-incidents',
   templateUrl: 'incidents.page.html',
 })
 export class IncidentsPage {
-  incidents = [];
+  private incidents: any[];
   queryText: string;
 
   constructor(private nav: NavController,
-              private loadingController: LoadingController) {
+              private loadingController: LoadingController,
+              private incidentsApi: IncidentsApi) {
     let incident1 = {
       number: 11,
       iconClass: 'icon-circle-red',
       badgeClass: 'red'
     };
 
-    let incident2 = {
-      number:12,
-      iconClass: 'icon-circle-green',
-      badgeClass: 'green'
-    };
+  }
 
-    let incident3 = {
-      number:13,
-      iconClass: 'icon-circle-yellow',
-      badgeClass: 'yellow'
-    };
-
-    this.incidents.push(incident1);
-    this.incidents.push(incident2);
-    this.incidents.push(incident3);
+  ionViewDidLoad() {
+    this.incidentsApi.getIncidents()
+      .subscribe(data => this.incidents = data);
   }
 
   searchIncidents() {
@@ -42,7 +33,13 @@ export class IncidentsPage {
   }
 
   goToIncidentDetails($event, incident) {
-    this.nav.push(IncidentHomePage, incident);
+    let loader = this.loadingController.create({
+      content: 'Cargando incidente...',
+      dismissOnPageChange: true
+    });
+    loader.present();
+    this.incidentsApi.getIncident(incident.id)
+      .subscribe(incDetail => this.nav.push(IncidentHomePage, incDetail));
   }
 
 }

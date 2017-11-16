@@ -1,18 +1,18 @@
-<div  >
-<ion-row>
-  <ion-col col-2>
-    <a class="icon-circle" [ngClass]="incident.iconClass">
-      <ion-icon name="heart"></ion-icon>
-    </a>
-  </ion-col>
-  <ion-col col-7 class="incident-center-column">
-    <p class="address">Av. Avellaneda 3456</p>
-    <p class="illness">Dolor de cabeza</p>
-  </ion-col>
-  <ion-col col-3 class="incident-number-column">
-    <ion-badge [ngClass]="incident.badgeClass">Inc {{incident.number}}</ion-badge>
-  </ion-col>
-</ion-row>
+<div>
+  <ion-row>
+    <ion-col col-2>
+      <a class="icon-circle" [ngClass]="getClassesByIncidentGrade().iconClass">
+        <ion-icon name="heart"></ion-icon>
+      </a>
+    </ion-col>
+    <ion-col col-7 class="incident-center-column">
+      <p class="address">{{incident.address | truncate:[23, '...'] }}</p>
+      <p class="illness">Dolor de cabeza</p>
+    </ion-col>
+    <ion-col col-3 class="incident-number-column">
+      <ion-badge [ngClass]="getClassesByIncidentGrade().badgeClass">Inc {{incident.number}}</ion-badge>
+    </ion-col>
+  </ion-row>
 
   <hr/>
 
@@ -24,7 +24,7 @@
     <ion-col col-3 class="time-column">
       <div class="incident-right-data">
         <ion-icon name="ios-clock-outline"></ion-icon>
-        <span class="incident-time">10:55</span>
+        <span class="incident-time">{{incident.time}}</span>
       </div>
     </ion-col>
   </ion-row>

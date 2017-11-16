@@ -44,6 +44,9 @@
   &.icon-circle-yellow {
     background: color($colors, yellow, base);
   }
+  &.icon-circle-blue {
+    background: color($colors, blue, base);
+  }
 }
 
 ion-badge.red {
@@ -56,6 +59,10 @@ ion-badge.green {
 
 ion-badge.yellow {
   background: color($colors, yellow, base);
+}
+
+ion-badge.blue {
+  background: color($colors, blue, base);
 }
 
 .no-border-bottom {
