@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title text-center>{{medicalHistory[0].patient}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <medical-history-row *ngFor="let history of medicalHistory" [medicalHistory]="history"></medical-history-row>
+
+</ion-content>

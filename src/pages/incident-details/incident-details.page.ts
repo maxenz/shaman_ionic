@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {IncidentModel} from '../../models/models';
-import {AddressModel} from "../../models/address.model";
+import {IncidentModel, AddressModel} from '../../models/models';
 
 @Component({
   selector: 'page-incident-details',

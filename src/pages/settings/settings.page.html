@@ -1,12 +1,48 @@
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title text-center>{{shamanVersion}}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
+  <ion-list>
+    <ion-item-divider color="light">Configuración principal</ion-item-divider>
+    <ion-item>
+      <ion-label stacked>Número de movil</ion-label>
+      <ion-input type="text" [(ngModel)]="settings.mobileNumber" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Url</ion-label>
+      <ion-input type="text" [(ngModel)]="settings.urlApi"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Número de licencia</ion-label>
+      <ion-input type="text" [(ngModel)]="settings.license"></ion-input>
+    </ion-item>
 
-<ion-content padding>
+    <ion-item-divider color="light">Otras opciones</ion-item-divider>
+
+    <ion-item>
+      <ion-label>Pedir nro de reporte al cierre del incidente</ion-label>
+      <ion-checkbox color="primary" [(ngModel)]="settings.reportWhenClosingIncidentEnabled"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Pedir imagen adjunta al cierre del incidente</ion-label>
+      <ion-checkbox color="primary" [(ngModel)]="settings.imageWhenClosingIncidentEnabled"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Cancelación de servicio habilitada</ion-label>
+      <ion-checkbox color="primary" [(ngModel)]="settings.incidentCancelationEnabled"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Opción de Ingreso / Salida habilitada</ion-label>
+      <ion-checkbox color="primary" [(ngModel)]="settings.accessTimeEnabled"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button block (click)="saveChanges()">Guardar cambios</button>
 
 </ion-content>

@@ -10,13 +10,15 @@ import {
   SettingsPage,
   IncidentDetailsPage,
   IncidentHomePage,
-  IncidentActionsPage
+  IncidentActionsPage,
+  MedicalHistoryPage
 } from '../pages/pages';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AppVersion} from '@ionic-native/app-version';
-import {IncidentPreviewComponent, IncidentActionRowComponent} from '../components/components';
-import {IncidentsApi} from '../shared/shared';
+import {AppPreferences} from "@ionic-native/app-preferences";
+import {IncidentPreviewComponent, IncidentActionRowComponent, MedicalHistoryRowComponent} from '../components/components';
+import {IncidentsApi, ViewsUtilsService, AppSettingsService} from '../shared/shared';
 import {TruncatePipe} from "../utils/utils";
 
 @NgModule({
@@ -29,8 +31,10 @@ import {TruncatePipe} from "../utils/utils";
     IncidentDetailsPage,
     IncidentHomePage,
     IncidentActionsPage,
+    MedicalHistoryPage,
     IncidentPreviewComponent,
     IncidentActionRowComponent,
+    MedicalHistoryRowComponent,
     TruncatePipe
   ],
   imports: [
@@ -50,15 +54,20 @@ import {TruncatePipe} from "../utils/utils";
     IncidentDetailsPage,
     IncidentHomePage,
     IncidentActionsPage,
+    MedicalHistoryPage,
     IncidentPreviewComponent,
-    IncidentActionRowComponent
+    IncidentActionRowComponent,
+    MedicalHistoryRowComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AppVersion,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    IncidentsApi
+    IncidentsApi,
+    ViewsUtilsService,
+    AppPreferences,
+    AppSettingsService
   ]
 })
 export class AppModule {

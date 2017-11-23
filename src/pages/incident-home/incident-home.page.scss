@@ -2,4 +2,7 @@ page-incident-home {
   .tabs-ios[tabsLayout=icon-hide] .tab-button, .tabs-ios .tab-button.has-title-only {
     min-height:48px !important;
   }
+  ion-title > div {
+    margin-right:20%;
+  }
 }

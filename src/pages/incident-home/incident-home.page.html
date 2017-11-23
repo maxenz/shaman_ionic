@@ -7,7 +7,7 @@
 <ion-content>
   <ion-tabs tabsPlacement="top" id="tabIncidentHome" color="white" tabsLayout="icon-hide">
     <ion-tab tabTitle="Detalles" [rootParams]="incident" [root]="incidentDetailsTab"></ion-tab>
-    <ion-tab tabTitle="Acciones" [root]="incidentActionsTab"></ion-tab>
+    <ion-tab tabTitle="Acciones" [rootParams]="incident" [root]="incidentActionsTab"></ion-tab>
   </ion-tabs>
 </ion-content>
 
