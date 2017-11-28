@@ -1,23 +1,47 @@
 import {Injectable} from '@angular/core';
-import {AppPreferences} from "@ionic-native/app-preferences";
 import {AppSettingsModel} from "../models/app-settings.model";
+import {Storage} from '@ionic/storage';
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class AppSettingsService {
 
-  constructor(private appPreferences: AppPreferences) {
+  appSettings: AppSettingsModel = new AppSettingsModel();
+
+  constructor(private storage: Storage) {
   }
 
-  saveToAppPreferences(settings: AppSettingsModel) {
-    Object.keys(settings).forEach((key) => {
-      this.appPreferences.store(null, key, settings[key]);
+  initializeConfiguration() {
+    return new Promise(resolve => {
+      this.getAppPreferences()
+        .then(data => {
+          this.appSettings = data;
+          return resolve();
+        });
+    })
+
+  }
+
+  getSettings() {
+    return this.appSettings;
+  }
+
+  getAppPreferences(): Promise<any> {
+    return new Promise(resolve => {
+      let settings = new AppSettingsModel();
+      this.storage.forEach((val, key) => {
+        settings[key] = val;
+      })
+        .then(() => {
+          return resolve(settings);
+        });
     });
   }
 
-  getFromAppPreferences() {
-    this.appPreferences
-      .fetch(null, 'mobileNumber')
-      .then(res => console.log(res));
+  saveAppPreferences(settings: AppSettingsModel) {
+    Object.keys(settings).forEach((key) => {
+      this.storage.set(key, settings[key]);
+    });
   }
 
 }

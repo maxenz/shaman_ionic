@@ -71,4 +71,26 @@ export class IncidentActionsPage {
     confirm.present();
   }
 
+  setIncidentArrival() {
+    let confirm = this.alertCtrl.create({
+      title: 'Llegada del incidente',
+      message: '¿Está seguro que desea darle llegada al incidente?',
+      buttons: [
+        {
+          text: 'Sí',
+          handler: () => {
+            console.log('Agree clicked');
+          }
+        },
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
 }

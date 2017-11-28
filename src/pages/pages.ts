@@ -6,3 +6,4 @@ export * from './incident-details/incident-details.page';
 export * from './incident-actions/incident-actions.page';
 export * from './tabs/tabs.page';
 export * from './medical-history/medical-history.page';
+export * from './login/login.page';

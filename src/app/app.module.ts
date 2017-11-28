@@ -3,6 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
 import {HttpModule} from '@angular/http';
+import {IonicStorageModule} from '@ionic/storage';
 import {
   IncidentsPage,
   ProfilePage,
@@ -11,7 +12,8 @@ import {
   IncidentDetailsPage,
   IncidentHomePage,
   IncidentActionsPage,
-  MedicalHistoryPage
+  MedicalHistoryPage,
+  LoginPage
 } from '../pages/pages';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -32,6 +34,7 @@ import {TruncatePipe} from "../utils/utils";
     IncidentHomePage,
     IncidentActionsPage,
     MedicalHistoryPage,
+    LoginPage,
     IncidentPreviewComponent,
     IncidentActionRowComponent,
     MedicalHistoryRowComponent,
@@ -42,7 +45,8 @@ import {TruncatePipe} from "../utils/utils";
     IonicModule.forRoot(MyApp, {
       backButtonText: ''
     }),
-    HttpModule
+    HttpModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,6 +59,7 @@ import {TruncatePipe} from "../utils/utils";
     IncidentHomePage,
     IncidentActionsPage,
     MedicalHistoryPage,
+    LoginPage,
     IncidentPreviewComponent,
     IncidentActionRowComponent,
     MedicalHistoryRowComponent

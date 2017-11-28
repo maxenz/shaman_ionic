@@ -18,12 +18,15 @@ export class SettingsPage {
               private navParams: NavParams,
               private appVersion: AppVersion,
               private appSettingsService: AppSettingsService) {
-
     this.isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8080'));
     this.settings = new AppSettingsModel();
+    this.appSettingsService.getAppPreferences().then(settings => this.settings = settings);
   }
 
   ionViewDidLoad() {
+
+
+
     if (this.isApp) {
       this.appVersion.getAppName().then(data => {
         this.shamanVersion = data;
@@ -31,12 +34,10 @@ export class SettingsPage {
     } else {
       this.shamanVersion = 'Versión no disponible';
     }
-
-    this.appSettingsService.getFromAppPreferences();
   }
 
   saveChanges() {
-    this.appSettingsService.saveToAppPreferences(this.settings);
+    this.appSettingsService.saveAppPreferences(this.settings);
   }
 
 }

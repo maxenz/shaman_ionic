@@ -1,16 +1,29 @@
+<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+  <div class="flb animation-target">
+    <div class="Aligner-item Aligner-item--top"></div>
+    <div class="logo">
+      <p class="title">Shaman</p>
+      <p class="subtitle">by Paramedic</p>
+    </div>
+    <div class="Aligner-item Aligner-item--bottom"></div>
+  </div>
+</div>
+
 <ion-header>
   <ion-toolbar>
     <ion-searchbar placeholder="Buscar incidente"
-                   [(ngModel)]="queryText" (ionInput)="searchIncidents()">
-
+                   [(ngModel)]="queryText"
+                   (ionInput)="searchIncidents()">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-refresher (ionRefresh)="getIncidents($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <div *ngFor="let incident of incidents">
     <incident-preview [incident]="incident" (click)="goToIncidentDetails($event,incident)"></incident-preview>
   </div>
-
 </ion-content>
