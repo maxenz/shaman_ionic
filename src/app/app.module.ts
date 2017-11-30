@@ -13,7 +13,9 @@ import {
   IncidentHomePage,
   IncidentActionsPage,
   MedicalHistoryPage,
-  LoginPage
+  LoginPage,
+  AccessTimePage,
+  SplashPage
 } from '../pages/pages';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -35,6 +37,8 @@ import {TruncatePipe} from "../utils/utils";
     IncidentActionsPage,
     MedicalHistoryPage,
     LoginPage,
+    AccessTimePage,
+    SplashPage,
     IncidentPreviewComponent,
     IncidentActionRowComponent,
     MedicalHistoryRowComponent,
@@ -60,6 +64,8 @@ import {TruncatePipe} from "../utils/utils";
     IncidentActionsPage,
     MedicalHistoryPage,
     LoginPage,
+    AccessTimePage,
+    SplashPage,
     IncidentPreviewComponent,
     IncidentActionRowComponent,
     MedicalHistoryRowComponent

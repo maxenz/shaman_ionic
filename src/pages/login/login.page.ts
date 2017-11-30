@@ -9,7 +9,6 @@ import {TabsPage} from "../pages";
 })
 export class LoginPage {
   loading: Loading;
-  splash = true;
   loginCredentials = {license: '', password: ''};
 
   constructor(private nav: NavController,
@@ -17,12 +16,6 @@ export class LoginPage {
               private appSettingsService: AppSettingsService,
               private alertCtrl: AlertController,
               private loadingCtrl: LoadingController) {
-  }
-
-  ionViewDidLoad() {
-    setTimeout(() => {
-      this.splash = false;
-    }, 2700);
   }
 
   public login() {

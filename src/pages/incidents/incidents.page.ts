@@ -15,7 +15,6 @@ export class IncidentsPage {
   constructor(private nav: NavController,
               private loadingController: LoadingController,
               private incidentsApi: IncidentsApi) {
-
   }
 
   ionViewDidLoad() {

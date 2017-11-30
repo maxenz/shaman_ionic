@@ -4,13 +4,16 @@ import 'rxjs/add/operator/map';
 import {UserSettingsModel} from "../models/models";
 import {Observable} from "rxjs/Observable";
 import {AppSettingsService} from "./shared";
+import {Storage} from '@ionic/storage';
 
 @Injectable()
 export class AuthService {
 
   currentUser: UserSettingsModel;
 
-  constructor(private appSettingsService: AppSettingsService) {
+  constructor(
+  private appSettingsService: AppSettingsService,
+  private storage: Storage) {
 
   }
 
@@ -21,8 +24,7 @@ export class AuthService {
       return Observable.create(observer => {
         // At this point make a request to your backend to make a real check!
         let access = (credentials.password === "pass" && credentials.license === "email");
-        this.currentUser = new UserSettingsModel();
-        this.currentUser.license = credentials.license;
+        this.storage.set('logged', access);
         observer.next(access);
         observer.complete();
       });
@@ -34,10 +36,9 @@ export class AuthService {
   }
 
   public logout() {
-    return Observable.create(observer => {
-      this.currentUser = null;
-      observer.next(true);
-      observer.complete();
+    return new Promise(resolve => {
+      this.storage.set('logged', false);
+      return resolve();
     });
   }
 

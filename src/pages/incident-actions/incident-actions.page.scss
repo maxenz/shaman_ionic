@@ -1,6 +1,11 @@
 page-incident-actions {
+
+	incident-action-row {
+		border-bottom:color($colors, line-divider, base);
+	}
+
   incident-action-row.no-border-bottom {
-     ion-item {
+     button {
       div.item-inner {
         border-bottom: none !important;
       }

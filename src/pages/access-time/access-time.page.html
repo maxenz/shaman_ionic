@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title text-center>Móvil 25</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  	<ion-list>
+	    <ion-item-divider color="light">Registro de acceso del móvil</ion-item-divider>
+	    <ion-item>
+	      <ion-label stacked>Legajo</ion-label>
+	      <ion-input type="text" [(ngModel)]="accessTime.docket" ></ion-input>
+	    </ion-item>
+	    <ion-item>
+	      <ion-label stacked>DNI</ion-label>
+	      <ion-input type="number" [(ngModel)]="accessTime.dni"></ion-input>
+	    </ion-item>
+	    <ion-item>
+	      	<ion-label stacked>Tipo de registro</ion-label>
+			<ion-select [(ngModel)]="accessTime.registerType">
+		      <ion-option value="1" selected="true">Ingreso</ion-option>
+		      <ion-option value="2">Egreso</ion-option>
+	    	</ion-select>
+	    </ion-item>
+	</ion-list>
+
+  	<button ion-button block (click)="saveAccessTime()">Registrar</button>
+
+</ion-content>

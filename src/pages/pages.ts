@@ -7,3 +7,5 @@ export * from './incident-actions/incident-actions.page';
 export * from './tabs/tabs.page';
 export * from './medical-history/medical-history.page';
 export * from './login/login.page';
+export * from './access-time/access-time.page';
+export * from './splash/splash.page';

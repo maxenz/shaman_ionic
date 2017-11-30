@@ -1,3 +1,6 @@
+
+<ion-header>
+</ion-header>
 <ion-content>
 
   <div class="profile-container">
@@ -11,11 +14,11 @@
 
   <ion-list>
     <ion-item-divider>Acciones generales</ion-item-divider>
-    <ion-item>
+    <ion-item (click)="goToAccessTimePage()" *ngIf="accessTimeEnabled">
       <ion-icon name="ios-clock-outline" item-start></ion-icon>
       Registrar ingreso
     </ion-item>
-    <ion-item>
+    <ion-item (click)="logout()">
       <ion-icon name="ios-log-out-outline" color="danger" item-start></ion-icon>
       Cerrar sesión
     </ion-item>

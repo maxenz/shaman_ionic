@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, ToastController} from 'ionic-angular';
 import {AppVersion} from '@ionic-native/app-version';
 import {UserSettingsModel} from "../../models/models";
 import {AppSettingsService} from "../../shared/shared";
@@ -16,6 +16,7 @@ export class SettingsPage {
 
   constructor(private navCtrl: NavController,
               private navParams: NavParams,
+              private toastCtrl: ToastController,
               private appVersion: AppVersion,
               private appSettingsService: AppSettingsService) {
     this.isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8080'));
@@ -24,9 +25,6 @@ export class SettingsPage {
   }
 
   ionViewDidLoad() {
-
-
-
     if (this.isApp) {
       this.appVersion.getAppName().then(data => {
         this.shamanVersion = data;
@@ -38,6 +36,15 @@ export class SettingsPage {
 
   saveChanges() {
     this.appSettingsService.saveAppPreferences(this.settings);
+    this.showConfirmationToast();
+  }
+
+  showConfirmationToast() {
+    let toast = this.toastCtrl.create({
+      message: 'La configuración fue guardada correctamente.',
+      duration: 3000
+    });
+    toast.present();
   }
 
 }

@@ -39,6 +39,7 @@ export class AppSettingsService {
   }
 
   saveAppPreferences(settings: UserSettingsModel) {
+    this.appSettings = settings;
     Object.keys(settings).forEach((key) => {
       this.storage.set(key, settings[key]);
     });

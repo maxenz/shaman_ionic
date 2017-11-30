@@ -1,5 +1,3 @@
-
-
 export class UserSettingsModel{
 
   mobileNumber: number;
@@ -9,7 +7,5 @@ export class UserSettingsModel{
   imageWhenClosingIncidentEnabled: boolean;
   incidentCancelationEnabled: boolean;
   accessTimeEnabled: boolean;
-
-
-
+  logged: boolean;
 }
