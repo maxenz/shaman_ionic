@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {AppVersion} from '@ionic-native/app-version';
-import {AppSettingsModel} from "../../models/models";
+import {UserSettingsModel} from "../../models/models";
 import {AppSettingsService} from "../../shared/shared";
 
 @Component({
@@ -12,14 +12,14 @@ export class SettingsPage {
 
   isApp: boolean;
   shamanVersion: string;
-  settings: AppSettingsModel;
+  settings: UserSettingsModel;
 
   constructor(private navCtrl: NavController,
               private navParams: NavParams,
               private appVersion: AppVersion,
               private appSettingsService: AppSettingsService) {
     this.isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8080'));
-    this.settings = new AppSettingsModel();
+    this.settings = new UserSettingsModel();
     this.appSettingsService.getAppPreferences().then(settings => this.settings = settings);
   }
 

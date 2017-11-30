@@ -1,6 +1,6 @@
 
 
-export class AppSettingsModel{
+export class UserSettingsModel{
 
   mobileNumber: number;
   urlApi: string;

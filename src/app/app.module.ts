@@ -20,7 +20,7 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {AppVersion} from '@ionic-native/app-version';
 import {AppPreferences} from "@ionic-native/app-preferences";
 import {IncidentPreviewComponent, IncidentActionRowComponent, MedicalHistoryRowComponent} from '../components/components';
-import {IncidentsApi, ViewsUtilsService, AppSettingsService} from '../shared/shared';
+import {IncidentsApi, ViewsUtilsService, AppSettingsService, AuthService} from '../shared/shared';
 import {TruncatePipe} from "../utils/utils";
 
 @NgModule({
@@ -72,7 +72,8 @@ import {TruncatePipe} from "../utils/utils";
     IncidentsApi,
     ViewsUtilsService,
     AppPreferences,
-    AppSettingsService
+    AppSettingsService,
+    AuthService
   ]
 })
 export class AppModule {

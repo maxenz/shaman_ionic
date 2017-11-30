@@ -1,21 +1,47 @@
-<ion-content>
-  <div class="centered">
-    <ion-list>
-
-      <ion-item>
-        <ion-label stacked>Usuario</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label stacked>Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-
-    </ion-list>
-
-    <div>
-      <button ion-button outline color="white" block>Ingresar</button>
+<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+  <div class="flb animation-target">
+    <div class="Aligner-item Aligner-item--top"></div>
+    <div class="logo">
+      <p class="title">Shaman</p>
+      <p class="subtitle">by Paramedic</p>
     </div>
+    <div class="Aligner-item Aligner-item--bottom"></div>
+  </div>
+</div>
+
+<ion-content class="login-content" padding>
+
+  <div class="login-title-container">
+    <p class="login-title">Shaman</p>
+    <p class="login-subtitle">by Paramedic</p>
+  </div>
+
+  <div class="login-box">
+    <form (ngSubmit)="login()" #registerForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+
+            <ion-item>
+              <ion-input type="text" placeholder="Licencia" name="license" [(ngModel)]="loginCredentials.license"
+                         required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="password" placeholder="Contraseña" name="password"
+                         [(ngModel)]="loginCredentials.password" required></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
   </div>
 </ion-content>

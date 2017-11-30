@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {AppSettingsModel} from "../models/app-settings.model";
+import {UserSettingsModel} from "../models/models";
 import {Storage} from '@ionic/storage';
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class AppSettingsService {
 
-  appSettings: AppSettingsModel = new AppSettingsModel();
+  appSettings: UserSettingsModel = new UserSettingsModel();
 
   constructor(private storage: Storage) {
   }
@@ -28,7 +28,7 @@ export class AppSettingsService {
 
   getAppPreferences(): Promise<any> {
     return new Promise(resolve => {
-      let settings = new AppSettingsModel();
+      let settings = new UserSettingsModel();
       this.storage.forEach((val, key) => {
         settings[key] = val;
       })
@@ -38,7 +38,7 @@ export class AppSettingsService {
     });
   }
 
-  saveAppPreferences(settings: AppSettingsModel) {
+  saveAppPreferences(settings: UserSettingsModel) {
     Object.keys(settings).forEach((key) => {
       this.storage.set(key, settings[key]);
     });

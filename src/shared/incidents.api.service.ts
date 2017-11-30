@@ -2,14 +2,13 @@ import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {AppSettingsService} from "./app-settings.service";
 import 'rxjs';
-import {IncidentModel, MedicalHistoryModel} from "../models/models";
+import {IncidentModel, MedicalHistoryModel, UserSettingsModel} from "../models/models";
 import {Observable} from "rxjs/Observable";
-import {AppSettingsModel} from "../models/app-settings.model";
 
 @Injectable()
 export class IncidentsApi {
 
-  settings: AppSettingsModel;
+  settings: UserSettingsModel;
 
   constructor(private http: Http,
               private appSettingsService: AppSettingsService) {

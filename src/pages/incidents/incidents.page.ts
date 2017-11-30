@@ -11,30 +11,15 @@ import {IncidentsApi} from '../../shared/shared';
 export class IncidentsPage {
   private incidents: any[];
   queryText: string;
-  tabBarElement: any;
-  splash = true;
 
   constructor(private nav: NavController,
               private loadingController: LoadingController,
               private incidentsApi: IncidentsApi) {
 
-    this.tabBarElement = document.querySelector('.tabbar');
-
-    let incident1 = {
-      number: 11,
-      iconClass: 'icon-circle-red',
-      badgeClass: 'red'
-    };
   }
 
   ionViewDidLoad() {
-    this.tabBarElement.style.display = 'none';
-    setTimeout(() => {
-      this.splash = false;
-      this.tabBarElement.style.display = 'flex';
-      //this.getIncidents(null);
-      this.nav.push(LoginPage);
-    }, 3000);
+      this.getIncidents(null);
   }
 
   getIncidents(refresher) {
