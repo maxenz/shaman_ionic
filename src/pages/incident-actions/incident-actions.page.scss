@@ -1,14 +1,13 @@
 page-incident-actions {
 
-	incident-action-row {
-		border-bottom:color($colors, line-divider, base);
-	}
-
-  incident-action-row.no-border-bottom {
-     button {
-      div.item-inner {
-        border-bottom: none !important;
-      }
+  incident-action-row {
+    button.item {
+      border-bottom: 1px solid color($colors, line-divider, base);
     }
   }
+
+  .item-inner {
+    border-bottom: none !important;
+  }
+
 }
