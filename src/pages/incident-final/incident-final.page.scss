@@ -1,0 +1,13 @@
+page-incident-final {
+
+  ion-auto-complete {
+    width:100%;
+  }
+
+  .item {
+    border-bottom: 1px solid color($colors, line-divider, base);
+    div.item-inner {
+      border-bottom: none !important;
+    }
+  }
+}

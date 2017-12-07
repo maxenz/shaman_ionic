@@ -15,15 +15,17 @@ import {
   MedicalHistoryPage,
   LoginPage,
   AccessTimePage,
-  SplashPage
+  SplashPage,
+  IncidentFinalPage
 } from '../pages/pages';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AppVersion} from '@ionic-native/app-version';
 import {AppPreferences} from "@ionic-native/app-preferences";
 import {IncidentPreviewComponent, IncidentActionRowComponent, MedicalHistoryRowComponent} from '../components/components';
-import {IncidentsApi, ViewsUtilsService, AppSettingsService, AuthService} from '../shared/shared';
+import {IncidentsApi, ViewsUtilsService, AppSettingsService, AuthService, AutocompleteDiagnosisService} from '../shared/shared';
 import {TruncatePipe} from "../utils/utils";
+import {AutoCompleteModule} from 'ionic2-auto-complete';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import {TruncatePipe} from "../utils/utils";
     LoginPage,
     AccessTimePage,
     SplashPage,
+    IncidentFinalPage,
     IncidentPreviewComponent,
     IncidentActionRowComponent,
     MedicalHistoryRowComponent,
@@ -50,7 +53,8 @@ import {TruncatePipe} from "../utils/utils";
       backButtonText: ''
     }),
     HttpModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AutoCompleteModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -66,6 +70,7 @@ import {TruncatePipe} from "../utils/utils";
     LoginPage,
     AccessTimePage,
     SplashPage,
+    IncidentFinalPage,
     IncidentPreviewComponent,
     IncidentActionRowComponent,
     MedicalHistoryRowComponent
@@ -79,7 +84,8 @@ import {TruncatePipe} from "../utils/utils";
     ViewsUtilsService,
     AppPreferences,
     AppSettingsService,
-    AuthService
+    AuthService,
+    AutocompleteDiagnosisService
   ]
 })
 export class AppModule {

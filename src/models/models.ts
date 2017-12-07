@@ -3,3 +3,4 @@ export * from './address.model';
 export * from './medical-history.model';
 export * from './user-settings.model';
 export * from './access-time.model';
+export * from './incident-final.model';

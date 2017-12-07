@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavParams} from 'ionic-angular';
 import {IncidentModel, AddressModel} from '../../models/models';
 
 @Component({
@@ -11,8 +11,7 @@ export class IncidentDetailsPage {
   detailSections = [];
   incident: IncidentModel;
 
-  constructor(private navCtrl: NavController,
-              private navParams: NavParams) {
+  constructor(private navParams: NavParams) {
 
     this.incident = navParams.data;
     this.detailSections.push(this.getIncidentSection());

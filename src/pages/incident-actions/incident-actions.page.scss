@@ -4,6 +4,14 @@ page-incident-actions {
     button.item {
       border-bottom: 1px solid color($colors, line-divider, base);
     }
+
+    &[disabled] {
+      button.item{
+        cursor: default;
+        opacity: .4;
+        pointer-events:none;
+      }
+    }
   }
 
   .item-inner {

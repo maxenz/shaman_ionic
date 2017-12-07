@@ -9,7 +9,7 @@
     <ion-item-divider color="light">Configuración principal</ion-item-divider>
     <ion-item>
       <ion-label stacked>Número de movil</ion-label>
-      <ion-input type="text" [(ngModel)]="settings.mobileNumber" ></ion-input>
+      <ion-input type="text" [(ngModel)]="settings.mobileNumber"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Url</ion-label>
@@ -21,26 +21,34 @@
     </ion-item>
 
     <ion-item-divider color="light">Otras opciones</ion-item-divider>
-
     <ion-item>
-      <ion-label>Pedir nro de reporte al cierre del incidente</ion-label>
-      <ion-checkbox color="primary" [(ngModel)]="settings.reportWhenClosingIncidentEnabled"></ion-checkbox>
+      <ion-toggle color="primary" [(ngModel)]="settings.reportWhenClosingIncidentEnabled"></ion-toggle>
+      <ion-label>
+        Pedir nro de reporte al cierre del incidente
+      </ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-label>Pedir imagen adjunta al cierre del incidente</ion-label>
-      <ion-checkbox color="primary" [(ngModel)]="settings.imageWhenClosingIncidentEnabled"></ion-checkbox>
+      <ion-toggle color="primary" [(ngModel)]="settings.imageWhenClosingIncidentEnabled"></ion-toggle>
+      <ion-label>
+        Pedir imagen adjunta al cierre del incidente
+      </ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-label>Cancelación de servicio habilitada</ion-label>
-      <ion-checkbox color="primary" [(ngModel)]="settings.incidentCancelationEnabled"></ion-checkbox>
+      <ion-toggle color="primary" [(ngModel)]="settings.incidentCancelationEnabled"></ion-toggle>
+      <ion-label>
+        Cancelación de servicio habilitada
+      </ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-label>Opción de Ingreso / Salida habilitada</ion-label>
-      <ion-checkbox color="primary" [(ngModel)]="settings.accessTimeEnabled"></ion-checkbox>
+      <ion-toggle color="primary" [(ngModel)]="settings.accessTimeEnabled"></ion-toggle>
+      <ion-label>
+        Opción de Ingreso / Salida habilitada
+      </ion-label>
     </ion-item>
+
   </ion-list>
 
   <button ion-button block (click)="saveChanges()">Guardar cambios</button>

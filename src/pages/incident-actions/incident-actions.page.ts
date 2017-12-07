@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams, LoadingController, ToastController, AlertController} from 'ionic-angular';
 import {IncidentModel} from "../../models/models";
-import {MedicalHistoryPage} from "../pages";
+import {MedicalHistoryPage, IncidentFinalPage} from "../pages";
 import {IncidentsApi} from "../../shared/shared";
 
 declare var window: any;
@@ -25,6 +25,10 @@ export class IncidentActionsPage {
 
   goToDirection() {
     window.location = `geo:${this.incident.latitude},${this.incident.longitude};u=35`;
+  }
+
+  goToIncidentFinal() {
+    this.nav.parent.parent.push(IncidentFinalPage, this.incident);
   }
 
   goToMedicalHistory() {

@@ -9,3 +9,4 @@ export * from './medical-history/medical-history.page';
 export * from './login/login.page';
 export * from './access-time/access-time.page';
 export * from './splash/splash.page';
+export * from './incident-final/incident-final.page';

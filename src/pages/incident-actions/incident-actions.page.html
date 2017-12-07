@@ -2,19 +2,54 @@
   <ion-list>
     <ion-item-divider color="light">Principal</ion-item-divider>
 
-    <incident-action-row [icon]="'trending-up'" [title]="'Dar salida'" [btnEnabled]="incident.exitEnabled" (click)="setIncidentExit()"></incident-action-row>
-    <incident-action-row [icon]="'trending-down'" [title]="'Dar llegada'" [btnEnabled]="incident.arrivingEnabled"></incident-action-row>
-    <incident-action-row class="no-border-bottom" [icon]="'hand'" [btnEnabled]="incident.finalEnabled" [title]="'Finalizar'"></incident-action-row>
+    <incident-action-row
+      [icon]="'trending-up'"
+      [title]="'Dar salida'"
+      [attr.disabled]="!incident.exitEnabled ? true : null"
+      (click)="!incident.exitEnabled || setIncidentExit()">
+    </incident-action-row>
+
+    <incident-action-row
+      [icon]="'trending-down'"
+      [attr.disabled]="!incident.arrivingEnabled ? true : null"
+      (click)="!incident.arrivingEnabled  || setIncidentArrival()"
+      [title]="'Dar llegada'">
+    </incident-action-row>
+
+    <incident-action-row
+      class="no-border-bottom"
+      [icon]="'hand'"
+      (click)="incident.finalEnabled || goToIncidentFinal()"
+      [title]="'Finalizar'">
+    </incident-action-row>
 
     <ion-item-divider color="light">Geolocalización</ion-item-divider>
 
-    <incident-action-row [icon]="'globe'" [title]="'Ubicación'"></incident-action-row>
-    <incident-action-row class="no-border-bottom" [icon]="'navigate'" [title]="'Cómo llegar'" (click)="goToDirection()"></incident-action-row>
+    <incident-action-row
+      [icon]="'globe'"
+      [title]="'Ubicación'">
+    </incident-action-row>
+
+    <incident-action-row
+      class="no-border-bottom"
+      [icon]="'navigate'"
+      [title]="'Cómo llegar'"
+      (click)="goToDirection()">
+    </incident-action-row>
 
     <ion-item-divider color="light">Misceláneos</ion-item-divider>
 
-    <incident-action-row [icon]="'camera'" [title]="'Adjuntar imagen'"></incident-action-row>
-    <incident-action-row class="no-border-bottom" [icon]="'list-box'" [title]="'Historia clínica'" (click)="goToMedicalHistory()"></incident-action-row>
+    <incident-action-row
+      [icon]="'camera'"
+      [title]="'Adjuntar imagen'">
+    </incident-action-row>
+
+    <incident-action-row
+      class="no-border-bottom"
+      [icon]="'list-box'"
+      [title]="'Historia clínica'"
+      (click)="goToMedicalHistory()">
+    </incident-action-row>
 
   </ion-list>
 </ion-content>

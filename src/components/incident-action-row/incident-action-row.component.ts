@@ -7,7 +7,6 @@ import {Component, Input} from '@angular/core';
 export class IncidentActionRowComponent {
   @Input() icon : string;
   @Input() title : string;
-  @Input() btnEnabled: boolean;
   constructor() {
 
   }

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Final del incidente {{incident.number}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item-divider color="light">Parámetros generales</ion-item-divider>
+
+    <ion-item>
+      <ion-toggle color="primary" [(ngModel)]="settings.serviceWasDone"></ion-toggle>
+      <ion-label>
+        El servicio fue realizado
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-toggle color="primary" [(ngModel)]="settings.copaymentCharged"></ion-toggle>
+      <ion-label>
+        Copago cobrado
+      </ion-label>
+    </ion-item>
+
+    <ion-item-divider color="light">Configuración del servicio</ion-item-divider>
+
+    <ion-auto-complete [dataProvider]="autocompleteDiagnosisService" [options]="{ placeholder : 'Diagnóstico' }"></ion-auto-complete>
+
+
+  </ion-list>
+</ion-content>
