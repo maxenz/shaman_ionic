@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import {AppSettingsService} from "./shared";
 
 @Injectable()
-export class AutocompleteDiagnosisService implements AutoCompleteService {
+export class AutocompleteReasonsService implements AutoCompleteService {
   labelAttribute = "description";
 
   constructor(private http: Http,
@@ -13,7 +13,7 @@ export class AutocompleteDiagnosisService implements AutoCompleteService {
   }
 
   getResults(keyword: string) {
-    return this.appSettingsService.getDiagnosis()
+    return this.appSettingsService.getReasons()
       .map(
         result => {
           return result.filter(item => item.description.toLowerCase().startsWith(keyword.toLowerCase()));

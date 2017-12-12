@@ -5,13 +5,11 @@
 
 </ion-header>
 
-
 <ion-content>
   <ion-list>
     <ion-item-divider color="light">Parámetros generales</ion-item-divider>
-
     <ion-item>
-      <ion-toggle color="primary" [(ngModel)]="settings.serviceWasDone"></ion-toggle>
+      <ion-toggle checked="true" color="primary" [(ngModel)]="settings.serviceWasDone"></ion-toggle>
       <ion-label>
         El servicio fue realizado
       </ion-label>
@@ -26,8 +24,33 @@
 
     <ion-item-divider color="light">Configuración del servicio</ion-item-divider>
 
-    <ion-auto-complete [dataProvider]="autocompleteDiagnosisService" [options]="{ placeholder : 'Diagnóstico' }"></ion-auto-complete>
+    <ion-item *ngIf="settings.serviceWasDone">
+      <ion-input type="text" [(ngModel)]="settings.diagnosisCode" (ionBlur)="diagnosisCodeHandler()"></ion-input>
+      <ion-label>
+        Código de diagnóstico
+      </ion-label>
+    </ion-item>
+    <ion-auto-complete *ngIf="settings.serviceWasDone" [(ngModel)]="settings.diagnosisDescription"
+                       [dataProvider]="autocompleteDiagnosisService" (itemSelected)="diagnosisDescriptionSelected()"
+                       [options]="{ placeholder : 'Ingrese diagnóstico' }"></ion-auto-complete>
 
-
+    <ion-item *ngIf="!settings.serviceWasDone">
+      <ion-input type="text" [(ngModel)]="settings.reasonCode" (ionBlur)="reasonsCodeHandler()"></ion-input>
+      <ion-label>
+        Código de motivo
+      </ion-label>
+    </ion-item>
+    <ion-auto-complete *ngIf="!settings.serviceWasDone" [(ngModel)]="settings.reasonDescription"
+                       [dataProvider]="autocompleteReasonsService" (itemSelected)="reasonsDescriptionSelected()"
+                       [options]="{ placeholder : 'Ingrese motivo' }"></ion-auto-complete>
+    <ion-item>
+      <ion-label>
+        Observaciones
+      </ion-label>
+      <ion-textarea [(ngModel)]="settings.observations"></ion-textarea>
+    </ion-item>
   </ion-list>
+
+  <button ion-button block (click)="saveChanges()">Finalizar incidente</button>
+
 </ion-content>

@@ -4,3 +4,6 @@ export * from './medical-history.model';
 export * from './user-settings.model';
 export * from './access-time.model';
 export * from './incident-final.model';
+export * from './diagnosis.model';
+export * from './reason.model';
+export * from './descriptionable.model';

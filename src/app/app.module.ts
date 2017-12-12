@@ -23,7 +23,14 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {AppVersion} from '@ionic-native/app-version';
 import {AppPreferences} from "@ionic-native/app-preferences";
 import {IncidentPreviewComponent, IncidentActionRowComponent, MedicalHistoryRowComponent} from '../components/components';
-import {IncidentsApi, ViewsUtilsService, AppSettingsService, AuthService, AutocompleteDiagnosisService} from '../shared/shared';
+import {
+  IncidentsApi,
+  ViewsUtilsService,
+  AppSettingsService,
+  AuthService,
+  AutocompleteDiagnosisService,
+  AutocompleteReasonsService
+} from '../shared/shared';
 import {TruncatePipe} from "../utils/utils";
 import {AutoCompleteModule} from 'ionic2-auto-complete';
 
@@ -85,7 +92,8 @@ import {AutoCompleteModule} from 'ionic2-auto-complete';
     AppPreferences,
     AppSettingsService,
     AuthService,
-    AutocompleteDiagnosisService
+    AutocompleteDiagnosisService,
+    AutocompleteReasonsService
   ]
 })
 export class AppModule {

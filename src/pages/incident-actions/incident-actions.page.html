@@ -19,7 +19,8 @@
     <incident-action-row
       class="no-border-bottom"
       [icon]="'hand'"
-      (click)="incident.finalEnabled || goToIncidentFinal()"
+      [attr.disabled]="!incident.finalEnabled ? true : null"
+      (click)="!incident.finalEnabled || goToIncidentFinal()"
       [title]="'Finalizar'">
     </incident-action-row>
 
