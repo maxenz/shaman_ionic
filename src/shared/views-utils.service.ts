@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
+import {ToastController} from "ionic-angular";
 
 @Injectable()
-export class ViewsUtilsService{
+export class ViewsUtilsService {
 
-  constructor() {
+  constructor(private toastCtrl: ToastController) {
   }
 
   getClassesByIncidentGrade(obj) {
@@ -25,6 +26,15 @@ export class ViewsUtilsService{
       iconClass: `${iconCirclePrefix}-${color}`,
       badgeClass: color
     };
+  }
+
+  setToast(message, cssClass) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 2000,
+      cssClass: cssClass
+    });
+    toast.present();
   }
 
 

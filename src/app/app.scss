@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,28 +12,27 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-
 @import "../../node_modules/ionic2-auto-complete/auto-complete";
 
 .content-md, .content-ios {
-  background-color:  color($colors, light, base);
+  background-color: color($colors, light, base);
 }
 
-.icon-circle{
+.icon-circle {
   position: relative;
   display: inline-block;
   margin: -1px;
   width: 35px; /* 60*/
   height: 35px;
-  font-size:27px;
-  -moz-border-radius:50%;
-  -webkit-border-radius:50%;
+  font-size: 27px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
   border-radius: 50%;
   border: 1px solid #ebebeb;
   color: #fff;
-  text-align:center;
+  text-align: center;
   & ion-icon {
-    font-size:23px;
+    font-size: 23px;
   }
   &.icon-circle-red {
     background: color($colors, danger, base);
@@ -72,8 +69,20 @@ ion-badge.blue {
 }
 
 .button-block {
-  width:90%;
-  margin-left:5%;
-  margin-right:5%;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.toast-error {
+  .toast-wrapper {
+    background-color: color($colors, danger, base);
+  }
+}
+
+.toast-success {
+  .toast-wrapper {
+    background-color: color($colors, primary, base);
+  }
 }
 

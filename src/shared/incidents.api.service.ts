@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Http} from '@angular/http';
 import {AppSettingsService} from "./app-settings.service";
 import 'rxjs';
-import {IncidentModel, MedicalHistoryModel, UserSettingsModel} from "../models/models";
+import {IncidentModel, MedicalHistoryModel, UserSettingsModel, IncidentFinalModel} from "../models/models";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
@@ -37,6 +37,38 @@ export class IncidentsApi {
         return response.json().map(medicalHistory => {
           return new MedicalHistoryModel(medicalHistory);
         });
+      });
+  }
+
+  setIncidentExit(incident: IncidentModel): Observable<any> {
+    return this.http.post(`${this.settings.url}/actions/setsalidamovil?licencia=${this.settings.license}&movil=${this.settings.mobileNumber}&viajeID=${incident.currentTrip}`, null)
+      .map(response => {
+        return response.json();
+      });
+  }
+
+  setIncidentArrival(incident: IncidentModel): Observable<any> {
+    return this.http.post(`${this.settings.url}/actions/setllegadamovil?licencia=${this.settings.license}&movil=${this.settings.mobileNumber}&viajeID=${incident.id}`, null)
+      .map(response => {
+        return response.json();
+      });
+  }
+
+  setIncidentFinish(incident: IncidentModel, data: IncidentFinalModel): Observable<any> {
+    let parameters = `
+      reportNumber=${data.reportNumber}
+      &licencia=${this.settings.license}
+      &movil=${this.settings.mobileNumber}
+      &viajeID=${incident.id}
+      &motivoID=${data.reasonId}
+      &diagnosticoID=${data.diagnosisId}
+      &observaciones=${data.observations}
+      &copago=${data.copaymentCharged}
+      &derivationTime=${data.derivationTime}
+    `;
+    return this.http.post(`${this.settings.url}/actions/setfinalservicio?${parameters}`, null)
+      .map(response => {
+        return response.json();
       });
   }
 

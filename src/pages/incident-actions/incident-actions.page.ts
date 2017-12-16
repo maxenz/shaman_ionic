@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams, LoadingController, ToastController, AlertController} from 'ionic-angular';
+import {NavController, NavParams, LoadingController, AlertController} from 'ionic-angular';
 import {IncidentModel} from "../../models/models";
 import {MedicalHistoryPage, IncidentFinalPage} from "../pages";
-import {IncidentsApi} from "../../shared/shared";
+import {IncidentsApi, ViewsUtilsService} from "../../shared/shared";
+import {IncidentsPage} from "../incidents/incidents.page";
 
 declare var window: any;
 
@@ -18,7 +19,7 @@ export class IncidentActionsPage {
               private navParams: NavParams,
               private loadingCtrl: LoadingController,
               private incidentsApi: IncidentsApi,
-              private toastCtrl: ToastController,
+              private viewsUtilsService: ViewsUtilsService,
               private alertCtrl: AlertController) {
     this.incident = navParams.data;
   }
@@ -43,12 +44,8 @@ export class IncidentActionsPage {
         if (medicalHistory.length > 0) {
           this.nav.parent.parent.push(MedicalHistoryPage, medicalHistory);
         } else {
-          let toast = this.toastCtrl.create({
-            message: 'El paciente no posee historia clínica.',
-            duration: 2500
-          });
           loader.dismiss();
-          toast.present();
+          this.viewsUtilsService.setToast('El paciente no posee historia clínica', '');
         }
       });
   }
@@ -61,14 +58,16 @@ export class IncidentActionsPage {
         {
           text: 'Sí',
           handler: () => {
-            console.log('Agree clicked');
+            this.incidentsApi.setIncidentExit(this.incident).subscribe((data) => {
+              this.viewsUtilsService.setToast(data.Message, 'toast-success');
+              this.nav.parent.parent.setRoot(IncidentsPage);
+            }, () => {
+              this.viewsUtilsService.setToast('Hubo un error al darle salida al incidente.', 'toast-error');
+            });
           }
         },
         {
-          text: 'No',
-          handler: () => {
-            console.log('Disagree clicked');
-          }
+          text: 'No'
         }
       ]
     });
@@ -83,14 +82,16 @@ export class IncidentActionsPage {
         {
           text: 'Sí',
           handler: () => {
-            console.log('Agree clicked');
+            this.incidentsApi.setIncidentArrival(this.incident).subscribe((data) => {
+              this.viewsUtilsService.setToast(data.Message, 'toast-success');
+              this.nav.parent.parent.setRoot(IncidentsPage);
+            }, () => {
+              this.viewsUtilsService.setToast('Hubo un error al darle llegada al incidente.', 'toast-error');
+            });
           }
         },
         {
-          text: 'No',
-          handler: () => {
-            console.log('Disagree clicked');
-          }
+          text: 'No'
         }
       ]
     });

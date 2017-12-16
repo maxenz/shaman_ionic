@@ -33,7 +33,7 @@ export class IncidentModel {
   copayment: number;
   observations: string;
   phoneNumber: string;
-  clasificationId: string;
+  clasificationId: number;
   renameEnabled: boolean;
   derivationEnabled: boolean;
   principalAddress: AddressModel;

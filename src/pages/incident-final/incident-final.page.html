@@ -42,13 +42,29 @@
     </ion-item>
     <ion-auto-complete *ngIf="!settings.serviceWasDone" [(ngModel)]="settings.reasonDescription"
                        [dataProvider]="autocompleteReasonsService" (itemSelected)="reasonsDescriptionSelected()"
-                       [options]="{ placeholder : 'Ingrese motivo' }"></ion-auto-complete>
-    <ion-item>
+                       [options]="{ placeholder : 'Ingrese motivo' }">
+    </ion-auto-complete>
+
+    <ion-item *ngIf="incident.clasificationId === 1">
+      <ion-label>Tiempo de demora</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="settings.derivationTime">
+      </ion-datetime>
+    </ion-item>
+
+    <ion-item style="margin-top:-4px">
       <ion-label>
         Observaciones
       </ion-label>
       <ion-textarea [(ngModel)]="settings.observations"></ion-textarea>
     </ion-item>
+
+    <ion-item *ngIf="appSettings.reportWhenClosingIncidentEnabled">
+      <ion-input type="text" [(ngModel)]="settings.reportNumber"></ion-input>
+      <ion-label>
+        Nro. de reporte
+      </ion-label>
+    </ion-item>
+
   </ion-list>
 
   <button ion-button block (click)="saveChanges()">Finalizar incidente</button>
