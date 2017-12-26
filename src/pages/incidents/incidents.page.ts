@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, LoadingController} from 'ionic-angular';
-import {IncidentHomePage, LoginPage} from "../pages";
-import {IncidentsApi} from '../../shared/shared';
+import {IncidentHomePage} from "../pages";
+import {IncidentsApi, AppSettingsService} from '../../shared/shared';
 
 @Component({
   selector: 'page-incidents',
@@ -11,17 +11,25 @@ import {IncidentsApi} from '../../shared/shared';
 export class IncidentsPage {
   private incidents: any[];
   queryText: string;
+  noMobileConfigured: any;
 
   constructor(private nav: NavController,
               private loadingController: LoadingController,
-              private incidentsApi: IncidentsApi) {
+              private incidentsApi: IncidentsApi,
+              private appSettingsService: AppSettingsService) {
   }
 
   ionViewDidLoad() {
-      this.getIncidents(null);
+    this.getIncidents(null);
+  }
+
+  ionViewDidEnter() {
+    let mobileNumber = this.appSettingsService.getSettings().mobileNumber;
+    this.noMobileConfigured = mobileNumber === undefined;
   }
 
   getIncidents(refresher) {
+    if (this.noMobileConfigured) return;
     this.incidentsApi.getIncidents()
       .subscribe(data => {
         this.incidents = data;
@@ -44,5 +52,4 @@ export class IncidentsPage {
     this.incidentsApi.getIncident(incident.id)
       .subscribe(incDetail => this.nav.push(IncidentHomePage, incDetail));
   }
-
 }

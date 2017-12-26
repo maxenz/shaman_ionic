@@ -4,8 +4,8 @@ import {Storage} from '@ionic/storage';
 import {Observable} from "rxjs/Observable";
 import {Http} from "@angular/http";
 import {DiagnosisModel} from "../models/models";
-import {ReasonModel} from "../models/reason.model";
-
+import {ReasonModel, AccessTimeModel} from "../models/models";
+import {AccessTimeViewModel} from "../viewmodels/viewmodels";
 
 @Injectable()
 export class AppSettingsService {
@@ -51,11 +51,19 @@ export class AppSettingsService {
     });
   }
 
+  saveLicense(license) {
+    return this.storage.set('license', license);
+  }
+
+  saveUrl(url) {
+    return this.storage.set('url', url);
+  }
+
   getDiagnosis() {
     if (this.diagnosis.length > 0) {
       return Observable.of(this.diagnosis);
     } else {
-      return this.http.get(`${this.getSettings().urlApi}/diagnosis?licencia=${this.getSettings().license}`)
+      return this.http.get(`${this.getSettings().getUrlApi()}/diagnosis?licencia=${this.getSettings().license}`)
         .map(response => {
           this.diagnosis = response.json().map(diagnosis => {
             return new DiagnosisModel(diagnosis);
@@ -69,7 +77,7 @@ export class AppSettingsService {
     if (this.reasons.length > 0) {
       return Observable.of(this.reasons);
     } else {
-      return this.http.get(`${this.getSettings().urlApi}/reasons?licencia=${this.getSettings().license}`)
+      return this.http.get(`${this.getSettings().getUrlApi()}/reasons?licencia=${this.getSettings().license}`)
         .map(response => {
           this.reasons = response.json().map(reason => {
             return new ReasonModel(reason);
@@ -79,6 +87,17 @@ export class AppSettingsService {
     }
   }
 
+  setAccessTime(accessTime: AccessTimeModel) {
+
+    // --> Convierto el model a un viewmodel que entienda el backend
+    let vm = new AccessTimeViewModel(accessTime);
+    vm.movil = this.getSettings().mobileNumber;
+
+    return this.http.post(`${this.getSettings().getUrlApi()}/mobileaccesstime?licencia=${this.getSettings().license}`, vm)
+      .map(response => {
+        return response.json();
+      });
+  }
 }
 
 

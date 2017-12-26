@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {UserSettingsModel} from "../models/models";
 import {Observable} from "rxjs/Observable";
 import {AppSettingsService} from "./shared";
 import {Storage} from '@ionic/storage';
@@ -9,30 +8,22 @@ import {Storage} from '@ionic/storage';
 @Injectable()
 export class AuthService {
 
-  currentUser: UserSettingsModel;
-
-  constructor(
-  private appSettingsService: AppSettingsService,
-  private storage: Storage) {
+  constructor(private appSettingsService: AppSettingsService,
+              private storage: Storage,
+              private http: Http) {
 
   }
 
   public login(credentials) {
-    if (credentials.license === null || credentials.password === null) {
-      return Observable.throw("Please insert credentials");
+    if (!credentials.license || !credentials.password) {
+      return Observable.throw("Debe ingresar sus datos para iniciar sesión.");
     } else {
-      return Observable.create(observer => {
-        // At this point make a request to your backend to make a real check!
-        let access = (credentials.password === "pass" && credentials.license === "email");
-        this.storage.set('logged', access);
-        observer.next(access);
-        observer.complete();
-      });
+      let url = `${this.appSettingsService.getSettings().urlGestion}/android/login?user=${credentials.license}&password=${credentials.password}&log=0`;
+      return this.http.get(url)
+        .map(response => {
+          return response.json();
+        });
     }
-  }
-
-  public getUserInfo() : UserSettingsModel {
-    return this.appSettingsService.getSettings();
   }
 
   public logout() {

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavParams} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 import {IncidentModel, UserSettingsModel, IncidentFinalModel} from "../../models/models";
 import {
   AutocompleteDiagnosisService,
@@ -7,7 +7,8 @@ import {
   AppSettingsService,
   ViewsUtilsService
 } from "../../shared/shared";
-import {ReasonModel} from "../../models/reason.model";
+import {IncidentsApi} from "../../shared/incidents.api.service";
+import {IncidentsPage} from "../incidents/incidents.page";
 
 @Component({
   selector: 'page-incident-final',
@@ -21,10 +22,12 @@ export class IncidentFinalPage {
   appSettings: UserSettingsModel = new UserSettingsModel();
 
   constructor(private navParams: NavParams,
+              private navCtrl: NavController,
               private autocompleteDiagnosisService: AutocompleteDiagnosisService,
               private autocompleteReasonsService: AutocompleteReasonsService,
               private appSettingsService: AppSettingsService,
-              private viewsUtilsService: ViewsUtilsService) {
+              private viewsUtilsService: ViewsUtilsService,
+              private incidentsApi: IncidentsApi) {
     this.incident = navParams.data;
     this.appSettingsService.getDiagnosis().subscribe(data => this.diagnosisList = data);
     this.appSettingsService.getReasons().subscribe(data => this.reasonsList = data);
@@ -74,7 +77,7 @@ export class IncidentFinalPage {
 
   getReasonIdByCode() {
     let reasons = this.reasonsList.filter(r => {
-      return this.settings.reasonCode === r.code;
+      return this.settings.reasonCode.toLowerCase() === r.code.toLowerCase();
     });
 
     return reasons[0].id;
@@ -82,7 +85,7 @@ export class IncidentFinalPage {
 
   getDiagnosisIdByCode() {
     let diagnosis = this.diagnosisList.filter(d => {
-      return this.settings.diagnosisCode === d.code;
+      return this.settings.diagnosisCode.toLowerCase() === d.code.toLowerCase();
     });
 
     return diagnosis[0].id;
@@ -125,6 +128,22 @@ export class IncidentFinalPage {
       } else {
         this.settings.reasonId = this.getReasonIdByCode();
       }
+
+      //Borrar esto
+      this.settings.derivationTime = '00:00';
+
+      this.incidentsApi
+        .setIncidentFinish(this.incident, this.settings)
+        .subscribe((data) => {
+          if (data.Code === 0) {
+            this.viewsUtilsService.setToast(data.Message, 'toast-success');
+            this.navCtrl.parent.parent.setRoot(IncidentsPage);
+          } else {
+            this.viewsUtilsService.setToast(data.Message, 'toast-error');
+          }
+        }, (error) => {
+          this.viewsUtilsService.setToast(error, 'toast-error');
+        });
 
     }
   }

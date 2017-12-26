@@ -8,9 +8,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-refresher (ionRefresh)="getIncidents($event)">
+  <ion-refresher (ionRefresh)="getIncidents($event)" *ngIf="!noMobileConfigured">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+
+  <div *ngIf="noMobileConfigured">
+    <ion-card>
+      <ion-card-header>
+        Atención!
+      </ion-card-header>
+      <ion-card-content>
+        No hay ningún móvil configurado en este teléfono.
+      </ion-card-content>
+    </ion-card>
+  </div>
 
   <div *ngFor="let incident of incidents">
     <incident-preview [incident]="incident" (click)="goToIncidentDetails($event,incident)"></incident-preview>

@@ -1,7 +1,6 @@
 export class UserSettingsModel{
 
   mobileNumber: number;
-  urlApi: string;
   url: string;
   license: string;
   reportWhenClosingIncidentEnabled: boolean;
@@ -9,9 +8,10 @@ export class UserSettingsModel{
   incidentCancelationEnabled: boolean;
   accessTimeEnabled: boolean;
   logged: boolean;
+  urlGestion = 'http://paramedicapps.com.ar:57771';
 
-  constructor() {
-    this.urlApi = this.url + '/api';
+  getUrlApi() {
+    return this.url + '/api';
   }
 
 }
